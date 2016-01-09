@@ -1,23 +1,27 @@
-### 「以下の条件」について
+### Semigroupインスタンスが半群である条件について
 
-> 結合律
+最後に、半群の性質を見ていきます。
 
+> 結合律  
 > S の各元 a, b, c に対して、等式 (a • b) • c = a • (b • c) が満たされる。
 
-これはtest1で確認していることで、  
-「Semigroupインスタンスは必ずtest1テストを通します」  
-と言っているのと同じことです。
+これはsgLawが示していることと等価です。
 
-ということでSemigroup Int型は半群である、ということになります。
+```
+-- 半群の満たすべき法則
+sgLaw :: (Semigroup a, Eq a) => a -> a -> a -> Bool
+sgLaw x y z = (x `sappend` y) `sappend` z == x `sappend` (y `sappend` z)
+```
 
+また、以下でSemigroup Intが半群であることをテストしています。  
+( QuickCheck )
 
-試しにSemigroup [a]型と(++)演算子が半群であることを確認してみましょう。
-
-```haskell
-instance Semigroup [a] where
-  sappend = (++)
-
-sgTest2 :: IO ()
-sgTest2 = let sgLaw' = sgLaw :: [Float] -> [Float] -> [Float] -> Bool
+```
+-- Semigroup Intが半群であることのテスト
+sgTest1 :: IO ()
+sgTest1 = let sgLaw' = sgLaw :: Int -> Int -> Int -> Bool  -- QuickCheckのために単相化
           in quickCheck sgLaw'
 ```
+
+上記テストは正常に通ります。  
+ということでSemigroup Int型は半群である、ということになります。

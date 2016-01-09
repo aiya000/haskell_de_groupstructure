@@ -8,3 +8,4 @@
   - [半群コード](./doc/semigroup/code.md)
   - [半群解説-演算子](./doc/semigroup/explain_operator.md)
   - [半群解説-結合律](./doc/semigroup/explain_associative.md)
+  - [半群解説-半群がもうひとつ](./doc/semigroup/another.md)
