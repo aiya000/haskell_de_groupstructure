@@ -11,3 +11,6 @@ Haskellコードと一緒に群論の代数的構造とはどんなものかを�
 
 　群論の代数的構造を、Haskellの代数的データ構造として表すとどうなるか  
 という趣旨を持って書いていきます。
+
+## GitBook Page
+[GitBook](https://www.gitbook.com/book/aiya000/haskell_de_groupstructure)
