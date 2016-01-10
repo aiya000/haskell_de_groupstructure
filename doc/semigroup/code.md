@@ -9,7 +9,7 @@ import Test.QuickCheck
 class Semigroup a where
   sappend :: a -> a -> a
 
--- 半群の満たすべき法則
+-- 半群の満たすべき法則 ( 結合律 )
 sgLaw :: (Semigroup a, Eq a) => a -> a -> a -> Bool
 sgLaw x y z = (x `sappend` y) `sappend` z == x `sappend` (y `sappend` z)
 
