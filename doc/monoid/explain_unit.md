@@ -1,6 +1,6 @@
 ## Monoidインスタンスがモノイドである条件について
 
-　今回注視すべきは「単位元律 = `mnLawEm`」です。
+　今回注視すべきは単位元律…つまり`mnLawEm`です。
 
 ```haskell
 -- 単位元律
@@ -19,10 +19,15 @@ mnLawEm x =
 　実はこのWikipedia中の`e`は、`mempty`と同一です。
 
 `mnLawEm`は、例えば`a = 3`に対して以下になることを表しています。
-(「`mappend` = •」は`(*)`です)
+
+```
+mempty * 3 = 3 * mempty = 3
+```
+
+↓
 
 ```
 1 * 3 = 3 * 1 = 3
 ```
 
-`mnTestEm1`は`Monoid Int`が`mnLawEm`を満たしていることをテストしています。
+`mnTestEm`は`Monoid Int`が`mnLawEm`を満たしていることをテストしています。

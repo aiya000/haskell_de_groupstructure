@@ -1,7 +1,16 @@
 ## 群を表すHaskellのコード
 
+Group.hs  
 ```haskell
-import Test.QuickCheck
+module Group
+  ( Group
+  , gappend
+  , gempty
+  , ginv
+  , grpLawAp
+  , grpLawEm
+  , grpLawInv
+  ) where
 
 -- 群型クラス
 class Group a where
@@ -26,6 +35,12 @@ grpLawInv x =
   let left  = x `gappend` (ginv x)
       right = (ginv x) `gappend` x
   in left == right && right == gempty
+```
+
+GroupTest.hs  
+```haskell
+import Group
+import Test.QuickCheck
 
 -- 群インスタンスの例
 instance Group Int where
@@ -33,17 +48,19 @@ instance Group Int where
   gempty  = 0
   ginv    = negate
 
-grpTestAp1 :: IO ()
-grpTestAp1 = let grpLawAp' = grpLawAp :: Int -> Int -> Int -> Bool
-             in quickCheck grpLawAp'
 
-grpTestEm1 :: IO ()
-grpTestEm1 = let grpLawEm' = grpLawEm :: Int -> Bool
-             in quickCheck grpLawEm'
+-- 任意の元が法則を満たすことのテスト
+grpTestAp :: IO ()
+grpTestAp = let grpLawAp' = grpLawAp :: Int -> Int -> Int -> Bool
+            in quickCheck grpLawAp'
 
-grpTestInv1 :: IO ()
-grpTestInv1 = let grpLawInv' = grpLawInv :: Int -> Bool
-              in quickCheck grpLawInv'
+grpTestEm :: IO ()
+grpTestEm = let grpLawEm' = grpLawEm :: Int -> Bool
+            in quickCheck grpLawEm'
+
+grpTestInv :: IO ()
+grpTestInv = let grpLawInv' = grpLawInv :: Int -> Bool
+             in quickCheck grpLawInv'
 ```
 
 長いですね。  

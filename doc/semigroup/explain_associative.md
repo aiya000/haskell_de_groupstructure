@@ -5,23 +5,23 @@
 > 結合律  
 > S の各元 a, b, c に対して、等式 (a • b) • c = a • (b • c) が満たされる。
 
-これはsgLawが示していることと等価です。
+これは`sgLawAp`が示していることと等価です。
 
-```
+```haskell
 -- 半群の満たすべき法則
-sgLaw :: (Semigroup a, Eq a) => a -> a -> a -> Bool
-sgLaw x y z = (x `sappend` y) `sappend` z == x `sappend` (y `sappend` z)
+-- (x • y) • z = x • (y • z)
+sgLawAp :: (Semigroup a, Eq a) => a -> a -> a -> Bool
+sgLawAp x y z = (x `sappend` y) `sappend` z == x `sappend` (y `sappend` z)
 ```
 
-また、以下でSemigroup Intが半群であることをテストしています。  
-( QuickCheck )
+また以下で`QuickCheck`により、`Semigroup Int`が半群であることをテストしています。  
 
-```
+```haskell
 -- Semigroup Intが半群であることのテスト
-sgTest1 :: IO ()
-sgTest1 = let sgLaw' = sgLaw :: Int -> Int -> Int -> Bool  -- QuickCheckのために単相化
-          in quickCheck sgLaw'
+sgTestInt :: IO ()
+sgTestInt = let sgLawAp' = sgLawAp :: Int -> Int -> Int -> Bool
+            in quickCheck sgLawAp'
 ```
 
 上記テストは正常に通ります。  
-ということでSemigroup Int型は半群である、ということになります。
+ということで`Semigroup Int`型は半群である、ということになります。

@@ -9,12 +9,12 @@ instance Group Int where
   ginv    = negate
 ```
 
-上の「`Int`と`(+)`の群」の場合は…適当な数`7`を取り上げると
+上の「`Int`と`(+)`の群」の場合は…適当な数`7`を取り上げると  
 ```
 7 + (nagate 7) = (nagate 7) + 7 = 0
 ```
-を満たしますね。
-これは以下と同じです。
+を満たしますね。  
+これは以下と同じです。  
 ```
 7 + (ginv 7) = (ginv 7) + 7 = 0
 ```
@@ -22,16 +22,16 @@ instance Group Int where
 - - -
 
 　この法則(逆元の存在)を表すコードが以下です。  
-`grpLawInv`が法則を表し、`grpTestInv1`でそのテストを行っています。
+`grpLawInv`が法則を表し、`grpTestInv`でそのテストを行っています。
 
-```
+```haskell
 grpLawInv :: (Group a, Eq a) => a -> Bool
 grpLawInv x =
   let left  = x `gappend` (ginv x)
       right = (ginv x) `gappend` x
   in left == right && right == gempty
 
-grpTestInv1 :: IO ()
-grpTestInv1 = let grpLawInv' = grpLawInv :: Int -> Bool
-              in quickCheck grpLawInv'
+grpTestInv :: IO ()
+grpTestInv = let grpLawInv' = grpLawInv :: Int -> Bool
+             in quickCheck grpLawInv'
 ```

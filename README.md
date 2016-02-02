@@ -14,5 +14,8 @@ Haskellコードと一緒に群論の代数的構造とはどんなものかを�
 
 　お団子片手に、お茶のお供としてでもどうぞ、かる〜く読んでみてください。
 
+なお、この当本で使用されたコードは以下のリポジトリに公開されています。  
+[hs-algebra](http://github.com/aiya000/hs-algebra)
+
 ## GitBook Page
 [GitBook](https://www.gitbook.com/book/aiya000/haskell_de_groupstructure)

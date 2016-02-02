@@ -5,13 +5,13 @@
 といっても実は`Monoid [a]`は`GHC.Base`にて定義されているので、テストのみ行ってみます。
 
 ```haskell
-mnTestAp2 :: IO ()
-mnTestAp2 = let mnLawAp' = mnLawAp :: [Float] -> [Float] -> [Float] -> Bool
-            in quickCheck mnLawAp'
+mnTestApList :: IO ()
+mnTestApList = let mnLawAp' = mnLawAp :: [Float] -> [Float] -> [Float] -> Bool
+               in quickCheck mnLawAp'
 
-mnTestEm2 :: IO ()
-mnTestEm2 = let mnLawEm' = mnLawEm :: [Float] -> Bool
-            in quickCheck mnLawEm'
+mnTestEmList :: IO ()
+mnTestEmList = let mnLawEm' = mnLawEm :: [Float] -> Bool
+               in quickCheck mnLawEm'
 ```
 
 OK、通りました。

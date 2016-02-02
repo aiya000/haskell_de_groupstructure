@@ -11,6 +11,7 @@ Wikipediaの言葉と合わせて見ていきましょう。
 つまり64bit CPUであれば`-2147483648 〜 2147483647`という数全ての集合です。
 
 ```haskell
+-- 半群型クラス
 instance Semigroup Int where
   sappend = (*)
 ```
