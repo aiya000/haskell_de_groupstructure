@@ -11,7 +11,7 @@ instance Group Int where
 
 上の「`Int`と`(+)`の群」の場合は…適当な数`7`を取り上げると  
 ```
-7 + (nagate 7) = (nagate 7) + 7 = 0
+7 + (negate 7) = (negate 7) + 7 = 0
 ```
 を満たしますね。  
 これは以下と同じです。  
